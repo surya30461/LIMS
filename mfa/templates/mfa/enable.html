@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Enable MFA{% endblock %}
+
+{% block content %}
+<h2>Enable Multi-Factor Authentication</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Enable MFA</button>
+</form>
+{% endblock %}

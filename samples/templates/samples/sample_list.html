@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Sample List{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Sample List</h1>
+
+<!-- Search Form -->
+<form method="get" class="mb-4">
+   <div class="input-group">
+       <input
+         type="text"
+         name="q"
+         class="form-control"
+         placeholder="Search samples..."
+         value="{{ request.GET.q|default:'' }}"
+       >
+       <button type="submit" class="btn btn-primary">Search</button>
+   </div>
+</form>
+
+
+<a href="create/" class="btn btn-success mb-3">Add New Sample</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sample in samples %}
+            <tr>
+                <td>{{ sample.name }}</td>
+                <td>{{ sample.sample_type }}</td>
+                <td>
+                    <a href="{{ sample.id }}/" class="btn btn-info btn-sm">View</a>
+                    <a href="{{ sample.id }}/update/" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ sample.id }}/delete/" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="3">No samples found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

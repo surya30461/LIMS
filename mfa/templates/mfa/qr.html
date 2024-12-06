@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}MFA QR Code{% endblock %}
+
+{% block content %}
+<h2>Scan this QR Code</h2>
+<p>Use your authenticator app (e.g., Google Authenticator) to scan the code below:</p>
+<img src="{% url 'mfa_qr' %}" alt="QR Code">
+<a href="{% url 'secured_view' %}" class="btn btn-primary mt-3">Continue</a>
+{% endblock %}
